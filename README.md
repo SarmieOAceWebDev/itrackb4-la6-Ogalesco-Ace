@@ -16,3 +16,6 @@ Q3: Why do your links use route names instead of typed URLs? Give one concrete t
 
 I use the route names for automatic na mag generate ang laravel ng tamang URL. Example, when the URL of the subject list is still working and the back link of it because of the route('subjects.index'). now when it is hardcoded URL, it is possble na masira ang link that may lead to 404 when the route change URL.
 
+
+end.
+
