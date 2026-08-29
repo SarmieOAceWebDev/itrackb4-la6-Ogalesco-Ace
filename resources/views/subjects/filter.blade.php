@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Subjects</title>
+    <title>Filtered Subjects</title>
 </head>
 <body>
 
-    <h1>Subject List</h1>
+    <h1>Filtered Subjects</h1>
+
+    @if ($value)
+        <p>Active filter: {{ $value }}</p>
+    @else
+        <p>All subjects are shown.</p>
+    @endif
 
     <p>Prepared by: Ace Sarmiento Ogalesco</p>
 
@@ -19,11 +25,7 @@
 
         @foreach ($subjects as $subject)
         <tr>
-            <td>
-                <a href="{{ route('subjects.show', $subject['id']) }}">
-                    {{ $subject['code'] }}
-                </a>
-            </td>
+            <td>{{ $subject['code'] }}</td>
             <td>{{ $subject['title'] }}</td>
             <td>{{ $subject['units'] }}</td>
             <td>{{ $subject['category'] }}</td>
@@ -31,6 +33,12 @@
         @endforeach
 
     </table>
+
+    <br>
+
+    <a href="{{ route('subjects.index') }}">
+        Back to Subject List
+    </a>
 
 </body>
 </html>
