@@ -1,24 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Subjects</title>
-</head>
-<body>
+@extends('layouts.app')
+@section('title', 'Subject List')
+@section('content')
 
-    <h1>Subject List</h1>
-
-    <p>Prepared by: Ace Sarmiento Ogalesco</p>
-
-    <table border="1" cellpadding="8">
+    <h2>Subject List</h2>
+    <table class="table table-bordered table-striped">
         <tr>
+            <th>#</th>
             <th>Subject Code</th>
             <th>Subject Title</th>
             <th>Units</th>
             <th>Category</th>
+            <th>Status</th>
+
+
         </tr>
 
-        @foreach ($subjects as $subject)
+        @forelse ($subjects as $subject)
         <tr>
+            <td>{{ $loop->iteration }}</td>
+
             <td>
                 <a href="{{ route('subjects.show', $subject['id']) }}">
                     {{ $subject['code'] }}
@@ -27,10 +27,24 @@
             <td>{{ $subject['title'] }}</td>
             <td>{{ $subject['units'] }}</td>
             <td>{{ $subject['category'] }}</td>
+            <td>
+                @if ($subject['category'] === 'Project')
+                    <strong>Project Subject</strong>
+                @else
+                    Regular Subject
+                @endif
+            </td>
         </tr>
-        @endforeach
+        @empty
+        <tr>
+            <td colspan="6">
+                there are No subjects available at the moment.
+            </td>
+        </tr>
+        @endforelse
 
     </table>
 
-</body>
-</html>
+@endsection
+
+
