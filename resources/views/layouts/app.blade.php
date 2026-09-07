@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container mt-4">
-        <h1>the Subject Management System</h1>
+        <h1>Subject Management System</h1>
 
  @include('partials._nav')
 
@@ -18,6 +18,6 @@
         @yield('content')
 
     </div>
-
+    
 </body>
 </html>

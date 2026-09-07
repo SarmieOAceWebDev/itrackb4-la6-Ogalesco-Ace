@@ -1,44 +1,49 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Filtered Subjects</title>
-</head>
-<body>
+@extends('layouts.app')
+@section('title', 'Filtered Subjects')
+@section('content')
 
-    <h1>Filtered Subjects</h1>
+    <h2>Filtered Subjects</h2>
 
     @if ($value)
-        <p>Active filter: {{ $value }}</p>
+        <p>Active filter: <strong>{{ $value }}</strong></p>
     @else
         <p>All subjects are shown.</p>
     @endif
 
-    <p>Prepared by: Ace Sarmiento Ogalesco</p>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Subject Code</th>
+                <th>Subject Title</th>
+                <th>Units</th>
+                <th>Category</th>
+            </tr>
+        </thead>
 
-    <table border="1" cellpadding="8">
-        <tr>
-            <th>Subject Code</th>
-            <th>Subject Title</th>
-            <th>Units</th>
-            <th>Category</th>
-        </tr>
-
-        @foreach ($subjects as $subject)
-        <tr>
-            <td>{{ $subject['code'] }}</td>
-            <td>{{ $subject['title'] }}</td>
-            <td>{{ $subject['units'] }}</td>
-            <td>{{ $subject['category'] }}</td>
-        </tr>
-        @endforeach
-
+        <tbody>
+            @forelse ($subjects as $subject)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>
+                        <a href="{{ route('subjects.show', $subject['id']) }}">
+                            {{ $subject['code'] }}
+                        </a>
+                    </td>
+                    <td>{{ $subject['title'] }}</td>
+                    <td>{{ $subject['units'] }}</td>
+                    <td>{{ $subject['category'] }}</td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="5">
+                        There are no subjects available at the moment.
+                    </td>
+                </tr>
+            @endforelse
+        </tbody>
     </table>
-
-    <br>
-
-    <a href="{{ route('subjects.index') }}">
+    <a href="{{ route('subjects.index') }}" class="btn btn-secondary">
         Back to Subject List
     </a>
-
-</body>
-</html>
+@endsection
