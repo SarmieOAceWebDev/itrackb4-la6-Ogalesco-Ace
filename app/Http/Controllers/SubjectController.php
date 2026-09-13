@@ -21,10 +21,6 @@ class SubjectController extends Controller
         ];
     }
 
-
-
-
-
     public function index()
     {
         $subjects = $this->subjects();
@@ -72,7 +68,6 @@ class SubjectController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      */
@@ -80,7 +75,6 @@ class SubjectController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      */
@@ -88,7 +82,6 @@ class SubjectController extends Controller
     {
         //
     }
-
     public function filter($value = null)
     {
         $subjects = $this->subjects();
