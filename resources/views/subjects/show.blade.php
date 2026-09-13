@@ -10,5 +10,5 @@
     <p><strong>Subject Title:</strong> {{ $subject['title'] }}</p>
     <p><strong>Units:</strong> {{ $subject['units'] }}</p>
     <p><strong>Category:</strong> {{ $subject['category'] }}</p>
-    <p><a href="{{ route('subjects.index') }}">back to Subject List</a> </p>
+    <p><a href="{{ route('subjects.index') }}">Back to Subject List</a> </p>
 @endsection

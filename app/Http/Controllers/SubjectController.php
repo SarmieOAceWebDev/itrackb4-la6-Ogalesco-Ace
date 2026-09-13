@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 
 class SubjectController extends Controller
 {
-    private function subjects()
+    /**
+     * Display a listing of the resource.
+     */
+   private function subjects()
     {
         return [
             1 => ['id' => 1, 'code' => 'CAP102', 'title' => 'Capstone Project 2', 'units' => 3.0, 'category' => 'Project'],
@@ -18,20 +21,72 @@ class SubjectController extends Controller
         ];
     }
 
+
+
+
+
     public function index()
     {
         $subjects = $this->subjects();
 
         return view('subjects.index', ['subjects' => $subjects]);
+
     }
 
-    public function featured()
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
     {
-        $subjects = $this->subjects();
+        //
+    }
 
-        $subject = $subjects[1];
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+    }
 
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+         $subjects = $this->subjects();
+
+        if (!isset($subjects[$id])) {
+            abort(404);
+        }
+        $subject = $subjects[$id];
         return view('subjects.show', ['subject' => $subject]);
+
+       
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
 
     public function filter($value = null)
@@ -46,26 +101,14 @@ class SubjectController extends Controller
                     $filteredSubjects[] = $subject;
                 }
             }
-
             $subjects = $filteredSubjects;
         }
-
         return view('subjects.filter', [
             'subjects' => $subjects,
             'value' => $value
         ]);
     }
 
-    public function show($id)
-    {
-        $subjects = $this->subjects();
 
-        if (!isset($subjects[$id])) {
-            abort(404);
-        }
-
-        $subject = $subjects[$id];
-
-        return view('subjects.show', ['subject' => $subject]);
-    }
+   
 }

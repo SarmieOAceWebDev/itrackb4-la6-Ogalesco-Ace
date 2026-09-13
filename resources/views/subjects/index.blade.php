@@ -38,7 +38,7 @@
         @empty
         <tr>
             <td colspan="6">
-                there are No subjects available at the moment.
+                No subjects available at the moment.
             </td>
         </tr>
         @endforelse
