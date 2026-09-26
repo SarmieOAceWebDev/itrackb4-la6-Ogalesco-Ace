@@ -12,7 +12,7 @@ class SubjectController extends Controller
 
     public function index(Request $request)
     {
-        $category = $request->query('category', 'all');
+   
         $code = $request->query('code', 'all');
         $units = $request->query('units', 'all');
         $all = $this ->subjects();
@@ -40,23 +40,12 @@ class SubjectController extends Controller
             $subjects = $filteredSubjects;
         }
 
-       if ($category === 'all') {
-            $subjects = $subjects;
-        } else {
-            $filteredSubjects = [];
-            foreach ($subjects as $id => $subject) {
-                if ($subject['category'] === $category) {
-                    $filteredSubjects[$id] = $subject;
-                }
-            }
-            $subjects = $filteredSubjects;
-        } 
 
         return view('subjects.index', [
             'subjects' => $subjects,
             'code' => $code,
             'units' => $units,
-            'category' => $category
+           
         ]);
             
     }

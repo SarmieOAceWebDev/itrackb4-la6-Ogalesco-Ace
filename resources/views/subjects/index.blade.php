@@ -16,27 +16,21 @@
 
 <h3>Filter by Code</h3>
 <a href="{{ route('subjects.index') }}" >All</a> 
-<a href="{{ route('subjects.index', ['code' => 'CS']) }}" >CS</a>
-<a href="{{ route('subjects.index', ['code' => 'IT']) }}"> IT </a>
+<a href="{{ route('subjects.index', ['code' => 'CAP102' ]) }}">CAP102</a>
+<a href="{{ route('subjects.index', ['code' => 'ITPI333']) }}">ITPI333</a>
+<a href="{{ route('subjects.index', ['code' => 'ITPI441']) }}">ITPI441</a>
+<a href="{{ route('subjects.index', ['code' => 'ITRACKB4']) }}">ITRACKB4</a>
+<a href="{{ route('subjects.index', ['code' => 'ITTRACKB3']) }}">ITTRACKB3</a>
+<a href="{{ route('subjects.index', ['code' => 'ITEL301']) }}">ITEL301 </a>
 
-
-<h3>Filter by Category</h3>
-<a href="{{ route('subjects.index', ['category' => 'all', 'units' => $units]) }}">All</a>
-<a href="{{ route('subjects.index', ['category' => 'Project', 'units' => $units]) }}">Project</a>
-<a href="{{ route('subjects.index', ['category' => 'Major', 'units' => $units]) }}">Major</a>
-<a href="{{ route('subjects.index', ['category' => 'Elective', 'units' => $units]) }}">Elective</a>
 
 <h3>Filter by Units</h3>
-<a href="{{ route('subjects.index', ['category' => $category, 'units' => 'all']) }}">All</a>
-<a href="{{ route('subjects.index', ['category' => $category, 'units' => '2']) }}">2 Units</a>
-<a href="{{ route('subjects.index', ['category' => $category, 'units' => '3']) }}">3 Units</a>
+<a href="{{ route('subjects.index', [ 'units' => 'all']) }}">All</a>
+<a href="{{ route('subjects.index', [ 'units' => '2']) }}">2 Units</a>
+<a href="{{ route('subjects.index', [ 'units' => '3']) }}">3 Units</a>
 
 
-<p>
-    Category: {{ $category }}
-    |
-    Units: {{ $units }}
-</p>
+
 
 <a href="{{ route('subjects.index') }}">
     Clear Filters
