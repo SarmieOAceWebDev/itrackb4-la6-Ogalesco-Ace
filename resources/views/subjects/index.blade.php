@@ -2,6 +2,51 @@
 @section('title', 'Subject List')
 @section('content')
 
+
+
+ @if ($subjects == 'all')
+    <p> All Subjects</p>
+
+ @else 
+  <strong>Project Subject</strong>
+
+ @endif
+
+
+
+<h3>Filter by Code</h3>
+<a href="{{ route('subjects.index') }}" >All</a> 
+<a href="{{ route('subjects.index', ['code' => 'CS']) }}" >CS</a>
+<a href="{{ route('subjects.index', ['code' => 'IT']) }}"> IT </a>
+
+
+<h3>Filter by Category</h3>
+<a href="{{ route('subjects.index', ['category' => 'all', 'units' => $units]) }}">All</a>
+<a href="{{ route('subjects.index', ['category' => 'Project', 'units' => $units]) }}">Project</a>
+<a href="{{ route('subjects.index', ['category' => 'Major', 'units' => $units]) }}">Major</a>
+<a href="{{ route('subjects.index', ['category' => 'Elective', 'units' => $units]) }}">Elective</a>
+
+<h3>Filter by Units</h3>
+<a href="{{ route('subjects.index', ['category' => $category, 'units' => 'all']) }}">All</a>
+<a href="{{ route('subjects.index', ['category' => $category, 'units' => '2']) }}">2 Units</a>
+<a href="{{ route('subjects.index', ['category' => $category, 'units' => '3']) }}">3 Units</a>
+
+
+<p>
+    Category: {{ $category }}
+    |
+    Units: {{ $units }}
+</p>
+
+<a href="{{ route('subjects.index') }}">
+    Clear Filters
+</a>
+
+
+
+
+
+
     <h2>Subject List</h2>
     <table class="table table-bordered table-striped">
         <tr>
@@ -28,11 +73,7 @@
             <td>{{ $subject['units'] }}</td>
             <td>{{ $subject['category'] }}</td>
             <td>
-                @if ($subject['category'] === 'Project')
-                    <strong>Project Subject</strong>
-                @else
-                    Regular Subject
-                @endif
+               
             </td>
         </tr>
         @empty
