@@ -127,14 +127,16 @@ class SubjectController extends Controller
 
 
    private function subjects()
-    {
-        return [
-            1 => ['id' => 1, 'code' => 'CAP102', 'title' => 'Capstone Project 2', 'units' => 3.0, 'category' => 'Project'],
-            2 => ['id' => 2, 'code' => 'ITPI333', 'title' => 'Information Assurance and Security 2', 'units' => 2.0, 'category' => 'Major'],
-            3 => ['id' => 3, 'code' => 'ITPI441', 'title' => 'Systems Administration and Maintenance', 'units' => 2.0, 'category' => 'Major'],
-            4 => ['id' => 4, 'code' => 'ITRACKB4', 'title' => 'Web Systems and Technologies: Web Programming 2', 'units' => 2.0, 'category' => 'Major'],
-            5 => ['id' => 5, 'code' => 'ITTRACKB3', 'title' => 'Web Systems and Technologies: Web Programming 1', 'units' => 2.0, 'category' => 'Major'],
-            6 => ['id' => 6, 'code' => 'ITEL301', 'title' => 'Professional Elective', 'units' => 3.0, 'category' => 'Elective']
-        ];
-    }
+{
+    return [
+        1 => ['id' => 1, 'code' => 'CAP102', 'title' => 'Capstone Project 2', 'units' => 3.0, 'category' => 'Project', 'status' => 'Active'],
+        2 => ['id' => 2, 'code' => 'ITPI333', 'title' => 'Information Assurance and Security 2', 'units' => 2.0, 'category' => 'Major', 'status' => 'Active'],
+        3 => ['id' => 3, 'code' => 'ITPI441', 'title' => 'Systems Administration and Maintenance', 'units' => 2.0, 'category' => 'Major', 'status' => 'Active'],
+        4 => ['id' => 4, 'code' => 'ITRACKB4', 'title' => 'Web Systems and Technologies: Web Programming 2', 'units' => 2.0, 'category' => 'Major', 'status' => 'Active'],
+        5 => ['id' => 5, 'code' => 'ITTRACKB3', 'title' => 'Web Systems and Technologies: Web Programming 1', 'units' => 2.0, 'category' => 'Major', 'status' => 'Active'],
+        6 => ['id' => 6, 'code' => 'ITEL301', 'title' => 'Professional Elective', 'units' => 3.0, 'category' => 'Elective', 'status' => 'Drop']
+    ];
+
+}
+
 }

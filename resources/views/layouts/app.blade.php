@@ -9,7 +9,9 @@
 </head>
 <body>
     <div class="container mt-4">
-        <h1>Inheritance Test </h1>
+        <h1>The Subject management system</h1>
+
+        </h1>
 
  @include('partials._nav')
 

@@ -50,7 +50,8 @@
             <th>Units</th>
             <th>Category</th>
             <th>Status</th>
-
+            
+           
 
         </tr>
 
@@ -66,9 +67,9 @@
             <td>{{ $subject['title'] }}</td>
             <td>{{ $subject['units'] }}</td>
             <td>{{ $subject['category'] }}</td>
-            <td>
+            <td>{{ $subject['status'] }}</td>
                
-            </td>
+            
         </tr>
         @empty
         <tr>
