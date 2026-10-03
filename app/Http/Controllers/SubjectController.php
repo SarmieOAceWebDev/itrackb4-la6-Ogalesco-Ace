@@ -68,8 +68,8 @@ class SubjectController extends Controller
        
         $validated = $request->validate([
             'code' => 'required|string|max:10',
-            'subject' => 'required|string|max:255',
-            'units' => 'required|numeric|min:0',
+            'subject' => 'required|string|max:50',
+            'units' => 'required|numeric|min:1|max:2',
             'category' => 'required|string|max:50',
         ]);
 
