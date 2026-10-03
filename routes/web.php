@@ -18,4 +18,5 @@ Route::get('/subjects/filter/{value?}', function ($value = null) {
 });
 
 Route::resource('subjects', SubjectController::class)
-    ->only(['index', 'show']);
+    ->only(['index', 'show', 'create', 'store']);
+

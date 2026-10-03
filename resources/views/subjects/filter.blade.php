@@ -33,6 +33,7 @@
                     <td>{{ $subject['title'] }}</td>
                     <td>{{ $subject['units'] }}</td>
                     <td>{{ $subject['category'] }}</td>
+                    <td>{{ $subject['status'] }}</td>
                 </tr>
             @empty
                 <tr>

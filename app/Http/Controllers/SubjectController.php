@@ -57,7 +57,7 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('subjects.create');
     }
 
     /**
@@ -65,8 +65,38 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+        $validated = $request->validate([
+            'code' => 'required|string|max:10',
+            'subject' => 'required|string|max:255',
+            'units' => 'required|numeric|min:0',
+            'category' => 'required|string|max:50',
+        ]);
+
+
+        $subjects = $this->subjects();
+        $id =max(array_keys($subjects)) + 1;
+
+        $subjects[$id] = [
+            'code' => $validated['code'],
+            'subject' => $validated['subject'],
+            'units' => (float)$validated['units'],
+            'category' => $validated['category'],
+        ];
+
+        $this->saveSubjects($subjects);
+
+        return redirect()->route('subjects.index')->with('success', 'Subject added successfully.');
+
+
     }
+
+
+
+
+    
+
+
 
     /**
      * Display the specified resource.
@@ -79,7 +109,7 @@ class SubjectController extends Controller
             abort(404);
         }
         $subject = $subjects[$id];
-        return view('subjects.show', ['subject' => $subject]);
+        return view('subjects.show', ['subject' => $subject, 'id' => $id]);
 
        
     }
@@ -128,15 +158,21 @@ class SubjectController extends Controller
 
    private function subjects()
 {
-    return [
-        1 => ['id' => 1, 'code' => 'CAP102', 'title' => 'Capstone Project 2', 'units' => 3.0, 'category' => 'Project', 'status' => 'Active'],
-        2 => ['id' => 2, 'code' => 'ITPI333', 'title' => 'Information Assurance and Security 2', 'units' => 2.0, 'category' => 'Major', 'status' => 'Active'],
-        3 => ['id' => 3, 'code' => 'ITPI441', 'title' => 'Systems Administration and Maintenance', 'units' => 2.0, 'category' => 'Major', 'status' => 'Active'],
-        4 => ['id' => 4, 'code' => 'ITRACKB4', 'title' => 'Web Systems and Technologies: Web Programming 2', 'units' => 2.0, 'category' => 'Major', 'status' => 'Active'],
-        5 => ['id' => 5, 'code' => 'ITTRACKB3', 'title' => 'Web Systems and Technologies: Web Programming 1', 'units' => 2.0, 'category' => 'Major', 'status' => 'Active'],
-        6 => ['id' => 6, 'code' => 'ITEL301', 'title' => 'Professional Elective', 'units' => 3.0, 'category' => 'Elective', 'status' => 'Drop']
-    ];
+    $path = storage_path('app/subjects.json');
+    return json_decode(file_get_contents($path), true);
+    
+}
 
+private function saveSubjects($subjects)
+{
+   
+    file_put_contents(
+        storage_path('app/subjects.json'),
+        json_encode($subjects, JSON_PRETTY_PRINT)
+    );
+    
+   
 }
 
 }
+

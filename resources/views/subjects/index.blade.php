@@ -2,8 +2,6 @@
 @section('title', 'Subject List')
 @section('content')
 
-
-
  @if ($subjects == 'all')
     <p> All Subjects</p>
 
@@ -49,7 +47,7 @@
             <th>Subject Title</th>
             <th>Units</th>
             <th>Category</th>
-            <th>Status</th>
+           
             
            
 
@@ -58,17 +56,10 @@
         @forelse ($subjects as $subject)
         <tr>
             <td>{{ $loop->iteration }}</td>
-
-            <td>
-                <a href="{{ route('subjects.show', $subject['id']) }}">
-                    {{ $subject['code'] }}
-                </a>
-            </td>
-            <td>{{ $subject['title'] }}</td>
+            <td>{{ $subject['code'] }}</td>
+            <td>{{ $subject['subject'] }}</td>
             <td>{{ $subject['units'] }}</td>
             <td>{{ $subject['category'] }}</td>
-            <td>{{ $subject['status'] }}</td>
-               
             
         </tr>
         @empty
@@ -77,10 +68,5 @@
                 No subjects available at the moment.
             </td>
         </tr>
-        @endforelse
-
-    </table>
-
-@endsection
-
-
+        @endforelse 
+          

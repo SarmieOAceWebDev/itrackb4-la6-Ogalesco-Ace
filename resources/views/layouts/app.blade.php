@@ -9,14 +9,17 @@
 </head>
 <body>
     <div class="container mt-4">
+        @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+        @endif
+
         <h1>The Subject management system</h1>
-
-        </h1>
-
- @include('partials._nav')
-
-
+         @include('partials._nav')
         <p>Prepared by: Ace Sarmiento Ogalesco</p>
+
+
         @yield('content')
 
     </div>
