@@ -46,3 +46,23 @@ ans:i deleted the old filter method because it was already replaced by the new q
 
 
 enddd.
+
+
+
+Laboratory Act 7 
+Q1. Your form sends data with POST rather than GET. Explain what would go wrong if it used GET instead. Your answer should say something about what a browser does when a page is refreshed.
+
+ANS: if the form used GET, the browser would put the submitted values in the URL as query parameters, for example ?code That exposes the data in browser history and can make the URL unwieldy. More importantly, refreshing the page would repeat the GET request. Since creating a subject changes data, that could create duplicates if the app allowed creation through GET. In this Laravel app, the form submits to a POST route, so changing it to GET would instead fail because no GET route handles subjects.store.
+
+
+
+
+
+Q2. When validation fails, your controller does not run the code that saves the record — and you did not write an if statement to stop it. Explain what actually stops it, and where the visitor ends up.
+
+ANS:The laravels $request and validatate is the one who handles this automatically. if validation fails, it throws a validation excemption so the controller stops before reaching the code that saves the subject . the laravel redirects the visitor back to the form and makes the validation errors available there.
+
+
+Q3.Your success message is displayed from the layout, which renders on every page. Explain why it does not appear on every page
+
+ANS:the layout renders on every page, but the success messege is inside an if somthing but in session(success) check, the laravel stores it as a flash data, which is unavailable for oly the next request after the subject is created . and once that oage displays it, the flash data is cleared, so that is does not appear on later pages .
